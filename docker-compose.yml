@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  destia_mysql:
+    image: mysql:8.0
+    container_name: destia_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Gbd12345678;
+      MYSQL_DATABASE: destia
+      MYSQL_USER: user_destia
+      MYSQL_PASSWORD: Gbd12345678;
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql/
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3306:3306
+    restart: always
+    networks:
+      - destia_network
+
+  destia_phpmyadmin:
+    image: phpmyadmin
+    container_name: destia_phpmyadmin
+    volumes:
+      - ./volumes/phpmyadmin:/sessions/
+    expose:
+      - 8090
+    ports:
+      - 8090:80
+    environment:
+      PMA_HOST: destia_mysql
+      PMA_PORT: 3306
+    depends_on:
+      - destia_mysql
+    restart: always
+    networks:
+      - destia_network
+
+  destia_php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: destia_php
+    volumes:
+      - .:/var/www/html
+    expose:
+      - "8000"
+    ports:
+      - "8000:80"
+    environment:
+      TZ: America/Bogota
+    depends_on:
+      - destia_mysql
+    networks:
+      - destia_network
+
+networks:
+  destia_network:
+    name: destia_network
