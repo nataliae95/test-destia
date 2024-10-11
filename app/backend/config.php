@@ -8,7 +8,7 @@ class DBConfig {
     public function __construct() {    
         $this->host = 'destia_mysql';
         $this->username = 'root';
-        $this->password = 'bGl9Q<|5C9cl';
+        $this->password = 'Gbd12345678;';
         $this->dbname = 'destia';
     }
 

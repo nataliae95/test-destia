@@ -30,9 +30,9 @@ docker-compose up --build -d
 ## Acceso al Sistema
 
 ### Servicios
-- **Aplicación Web:**: Accede a la aplicación a través de http://localhost:8080.
+- **Aplicación Web:**: Accede a la aplicación a través de http://localhost:8000.
 - **Base de Datos MySQL**: Acceso a MySQL en el puerto 3306.
-- **phpMyAdmin**: Acceso a phpMyAdmin a través de http://localhost:8081 para gestionar la base de datos.
+- **phpMyAdmin**: Acceso a phpMyAdmin a través de http://localhost:8090 para gestionar la base de datos.
 
 ### Credenciales de MySQL
 ```bash
@@ -42,7 +42,7 @@ Contraseña: Gbd12345678;
 
 ### Ingreso al Proyecto
 
-- Accede a la aplicación a través de http://localhost:8080.
+- Accede a la aplicación a través de http://localhost:8000.
 - Serás llevado a una ventana de inicio de sesión. Para crear tu cuenta, haz clic en "Registrarse".
 - Completa el formulario de registro para acceder a la aplicación.
 
