@@ -2,6 +2,7 @@
     require __DIR__ . '/../../backend/clases/Task.php';
 
     $task = new Task();
+    $tasks =  $task->obtenerTareas();
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,16 @@
                     <a href="/create" class="btn btn-primary">Crear Nueva Tarea</a>
             </div>
             <div class="row">
-                <?php foreach ($task->obtenerTareas() as $task) { ?>
+                <?php if (count($tasks) == 0) {
+                    echo "<div class='col-12'>
+                            <div class='alert alert-warning' role='alert'>
+                                Aún no se han creado tareas.
+                            </div>
+                        </div>";
+                    } else {
+
+
+                foreach ($tasks as $task) { ?>
                     <div class="col-md-3">
                         <div class="card mb-3 shadow border-0" style="border-radius: 10px;">
                             <div class="card-body">
@@ -48,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } } ?>
             </div> 
         </div>  
         <?php require_once __DIR__ . '/../layouts/footer.php';  ?>   
